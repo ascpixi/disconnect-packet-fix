@@ -18,27 +18,27 @@ import java.util.function.Function;
 @Mixin(PacketCodecDispatcher.class)
 public abstract class ConnectionMixin
 {
-	@Final
-	@Shadow
+    @Final
+    @Shadow
     private Function<Object, ?> packetIdGetter;
 
-	@Final
-	@Shadow
-	private Object2IntMap<Object> typeToIndex;
+    @Final
+    @Shadow
+    private Object2IntMap<Object> typeToIndex;
 
-	@Inject(
-		at = @At("HEAD"),
-		method = "encode(Lio/netty/buffer/ByteBuf;Ljava/lang/Object;)V",
-		cancellable = true
-	)
-	private void encodeMixin(ByteBuf byteBuf, Object object, CallbackInfo info)
-	{
-		var packetId = this.packetIdGetter.apply(object);
-		if (!this.typeToIndex.containsKey(packetId)) {
-			if (Objects.equals(String.valueOf(packetId), "clientbound/minecraft:disconnect")) {
-				DisconnectPacketFix.LOGGER.debug("Caught an invalid disconnect packet.");
-				info.cancel();
-			}
-		}
-	}
+    @Inject(
+        at = @At("HEAD"),
+        method = "encode(Lio/netty/buffer/ByteBuf;Ljava/lang/Object;)V",
+        cancellable = true
+    )
+    private void encodeMixin(ByteBuf byteBuf, Object object, CallbackInfo info)
+    {
+        var packetId = this.packetIdGetter.apply(object);
+        if (!this.typeToIndex.containsKey(packetId)) {
+            if (Objects.equals(String.valueOf(packetId), "clientbound/minecraft:disconnect")) {
+                DisconnectPacketFix.LOGGER.debug("Caught an invalid disconnect packet.");
+                info.cancel();
+            }
+        }
+    }
 }
