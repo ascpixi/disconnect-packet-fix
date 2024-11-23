@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/ascpixi/disconnect-packet-fix/issues"
+license = "MIT"
+
+[[mods]]
+modId = "disconnect-packet-fix"
+version = "${version}"
+displayName = "Disconnect Packet Fix"
+authors = "ascpixi"
+description = '''
+Works around the MC-271325 bug (unknown disconnect packet)
+'''
+logoFile = "META-INF/icon.png"
+
+[[dependencies.disconnect-packet-fix]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.disconnect-packet-fix]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "disconnect-packet-fix.mixins.json"
