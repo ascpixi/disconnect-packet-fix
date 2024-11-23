@@ -1,28 +1,30 @@
 {
-	"schemaVersion": 1,
-	"id": "disconnect-packet-fix",
-	"version": "${version}",
-	"name": "Disconnect Packet Fix",
-	"description": "Works around the MC-271325 bug (unknown disconnect packet)",
-	"authors": ["ascpixi"],
-	"contact": {
-		"homepage": "https://ascpixi.dev",
-		"sources": "https://github.com/ascpixi/disconnect-packet-fix"
-	},
-	"license": "MIT",
-	"icon": "assets/disconnect-packet-fix/icon.png",
-	"environment": "server",
-	"entrypoints": {
-		"main": [
-			"dev.ascpixi.dpf.DisconnectPacketFix"
-		]
-	},
-	"mixins": [
-		"disconnect-packet-fix.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.21",
-		"java": ">=21"
-	}
+  "schemaVersion": 1,
+  "id": "disconnect-packet-fix",
+  "version": "${version}",
+  "name": "Disconnect Packet Fix",
+  "description": "Works around the MC-271325 bug (unknown disconnect packet)",
+  "authors": ["ascpixi"],
+  "contact": {
+    "homepage": "https://ascpixi.dev",
+    "sources": "https://github.com/ascpixi/disconnect-packet-fix"
+  },
+  "license": "MIT",
+  "icon": "assets/disconnect-packet-fix/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "dev.ascpixi.dpf.fabric.DisconnectPacketFixFabric"
+    ]
+  },
+  "mixins": [
+    "disconnect-packet-fix.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21",
+    "java": ">=21"
+  }
 }
+
+
