@@ -4,7 +4,7 @@ import net.neoforged.fml.common.Mod;
 
 import dev.ascpixi.dpf.DisconnectPacketFix;
 
-@Mod(DisconnectPacketFix.MOD_ID)
+@Mod("disconnect_packet_fix")
 public final class DisconnectPacketFixNeoForge
 {
     public DisconnectPacketFixNeoForge()
