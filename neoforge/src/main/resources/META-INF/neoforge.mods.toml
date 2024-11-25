@@ -4,7 +4,7 @@ issueTrackerURL = "https://github.com/ascpixi/disconnect-packet-fix/issues"
 license = "MIT"
 
 [[mods]]
-modId = "disconnect-packet-fix"
+modId = "disconnect_packet_fix"
 version = "${version}"
 displayName = "Disconnect Packet Fix"
 authors = "ascpixi"
@@ -13,14 +13,14 @@ Works around the MC-271325 bug (unknown disconnect packet)
 '''
 logoFile = "META-INF/icon.png"
 
-[[dependencies.disconnect-packet-fix]]
+[[dependencies.disconnect_packet_fix]]
 modId = "neoforge"
 type = "required"
 versionRange = "[21.0,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.disconnect-packet-fix]]
+[[dependencies.disconnect_packet_fix]]
 modId = "minecraft"
 type = "required"
 versionRange = "[1.21,)"
