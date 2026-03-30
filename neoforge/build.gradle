@@ -1,26 +1,17 @@
 plugins {
-    id 'com.github.johnrengelman.shadow'
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version "${neoforge_moddev_version}"
 }
 
-architectury {
-    platformSetupLoomIde()
-    neoForge()
+base {
+    archivesName = "${project.archives_name}-neoforge"
 }
 
-configurations {
-    common {
-        canBeResolved = true
-        canBeConsumed = false
-    }
-    compileClasspath.extendsFrom common
-    runtimeClasspath.extendsFrom common
-    developmentNeoForge.extendsFrom common
-
-    // Files in this configuration will be bundled into your mod using the Shadow plugin.
-    // Don't use the `shadow` configuration from the plugin itself as it's meant for excluding files.
-    shadowBundle {
-        canBeResolved = true
-        canBeConsumed = false
+sourceSets {
+    main {
+        java.srcDir('../common/src/main/java')
+        resources.srcDir('../common/src/main/resources')
     }
 }
 
@@ -31,11 +22,29 @@ repositories {
     }
 }
 
-dependencies {
-    neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
+neoForge {
+    version = project.neoforge_version
 
-    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
-    shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
+    runs {
+        client {
+            client()
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+        }
+
+        configureEach {
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        disconnect_packet_fix {
+            sourceSet(sourceSets.main)
+        }
+    }
 }
 
 processResources {
@@ -46,11 +55,20 @@ processResources {
     }
 }
 
-shadowJar {
-    configurations = [project.configurations.shadowBundle]
-    archiveClassifier = 'dev-shadow'
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
 }
 
-remapJar {
-    input.set shadowJar.archiveFile
+java {
+    withSourcesJar()
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = project.base.archivesName.get()
+            from components.java
+        }
+    }
 }

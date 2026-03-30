@@ -1,5 +1,3 @@
-modLoader = "javafml"
-loaderVersion = "[4,)"
 issueTrackerURL = "https://github.com/ascpixi/disconnect-packet-fix/issues"
 license = "MIT"
 
@@ -16,14 +14,14 @@ logoFile = "META-INF/icon.png"
 [[dependencies.disconnect_packet_fix]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.0,)"
+versionRange = "[26.1.0.15-beta,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.disconnect_packet_fix]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21,)"
+versionRange = "[26.1]"
 ordering = "NONE"
 side = "BOTH"
 
