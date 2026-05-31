@@ -21,7 +21,7 @@ side = "BOTH"
 [[dependencies.disconnect_packet_fix]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.1]"
+versionRange = "[26.1,27.0)"
 ordering = "NONE"
 side = "BOTH"
 
