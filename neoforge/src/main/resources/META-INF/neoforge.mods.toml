@@ -14,14 +14,14 @@ logoFile = "META-INF/icon.png"
 [[dependencies.disconnect_packet_fix]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.1.0.15-beta,)"
+versionRange = "[26.2.0.7-beta,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.disconnect_packet_fix]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.1,27.0)"
+versionRange = "[26.2,27.0)"
 ordering = "NONE"
 side = "BOTH"
 
