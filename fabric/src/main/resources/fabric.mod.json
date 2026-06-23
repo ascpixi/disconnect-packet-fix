@@ -21,8 +21,8 @@
     "disconnect-packet-fix.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.18.5",
-    "minecraft": "~26.1",
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
     "java": ">=25",
     "fabric-api": "*"
   }
