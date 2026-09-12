@@ -1,5 +1,5 @@
 # Disconnect Packet Fix for Fabric and NeoForge
-A mod for Fabric and NeoForge-based Minecraft servers that works around the [MC-271325](https://bugs.mojang.com/browse/MC-271325) bug. This bug frequently causes the console to be spammed with exception stacktraces, e.g.:
+A mod for Fabric and NeoForge-based Minecraft servers that works around the [MC-271325](https://bugs.mojang.com/browse/MC/issues/MC-271325) bug. This bug frequently causes the console to be spammed with exception stacktraces, e.g.:
 
 ```
 [22:35:52] [Netty Epoll Server IO #5/ERROR]: Error sending packet clientbound/minecraft:disconnect
@@ -43,4 +43,4 @@ io.netty.handler.codec.EncoderException: Sending unknown packet 'clientbound/min
 	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
 ```
 
-This mod serves to fix that until Mojang fixes this bug. The mod itself is extremely minimal, only using a single mixin to inject code to one method.
+This mod serves to fix that until Mojang fixes this bug. The mod itself is extremely minimal.
