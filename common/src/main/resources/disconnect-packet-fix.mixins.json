@@ -6,7 +6,8 @@
   "client": [
   ],
   "mixins": [
-    "ConnectionMixin"
+    "ConnectionMixin",
+    "MessageToByteEncoderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

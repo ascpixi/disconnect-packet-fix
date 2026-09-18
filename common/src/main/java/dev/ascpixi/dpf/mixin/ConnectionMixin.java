@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.net.InetSocketAddress;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -36,7 +37,15 @@ public abstract class ConnectionMixin
         var packetId = this.typeGetter.apply(object);
         if (!this.toId.containsKey(packetId)) {
             if (Objects.equals(String.valueOf(packetId), "clientbound/minecraft:disconnect")) {
-                DisconnectPacketFix.LOGGER.debug("Caught an invalid disconnect packet.");
+                var context = DisconnectPacketFix.getEncodingContext();
+                var address = context == null ? null : context.channel().remoteAddress();
+                var remoteIp = String.valueOf(address);
+                if (address instanceof InetSocketAddress socketAddress) {
+                    var inetAddress = socketAddress.getAddress();
+                    remoteIp = inetAddress != null ? inetAddress.getHostAddress() : socketAddress.getHostString();
+                }
+                
+                DisconnectPacketFix.LOGGER.warn("Caught an invalid disconnect packet from {}.", remoteIp);
                 info.cancel();
             }
         }
